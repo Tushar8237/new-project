@@ -21,7 +21,7 @@ const errorHandler = (err, req, res, next) => {
     if (err.code === 11000) {
         const field = Object.keys(err.keyValue)[0];
         const value = err.keyValue[field];
-        `Duplicate value for '${field}': '${value}'. Please use a different ${field}.`;
+        message = `Duplicate value for '${field}': '${value}'. Please use a different ${field}.`;
         statusCode = 400; // Bad Request
     }
 

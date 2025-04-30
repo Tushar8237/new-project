@@ -14,9 +14,13 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware to parse JSON requests
 app.use(express.json());
-app.use(cors());
+// app.options("*",cors());
 app.use(cookieParser());
 app.use(helmet());
+app.use(cors({
+    origin : 'http://localhost:5173',
+    credentials : true
+}))
 
 // Connect to MongoDB
 connectDB()
@@ -24,7 +28,7 @@ connectDB()
 
 // Define a simple route
 app.get('/', (req, res) => {
-    res.send('API is running...');
+    res.send('New project API is running...');
 })
 
 // Use routes
